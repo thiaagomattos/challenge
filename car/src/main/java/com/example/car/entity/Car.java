@@ -15,26 +15,15 @@ public class Car {
     private String fabricationYear;
 
 
-    @Override
-    public String toString() {
-        return "Car{" +
-                "idChassi=" + idChassi +
-                ", name='" + name + '\'' +
-                ", brand='" + brand + '\'' +
-                ", color='" + color + '\'' +
-                ", fabricationYear='" + fabricationYear + '\'' +
-                '}';
-    }
-
     public Car() {
     }
 
-    public Long getIdChassi() {
+    public Long getId() {
         return idChassi;
     }
 
-    public void setIdChassi(Long idChassi) {
-        this.idChassi = idChassi;
+    public void setId(Long id) {
+        this.idChassi = id;
     }
 
     public String getName() {
@@ -69,8 +58,19 @@ public class Car {
         this.fabricationYear = fabricationYear;
     }
 
-    public Car(Long idChassi, String name, String brand, String color, String fabricationYear) {
-        this.idChassi = idChassi;
+    @Override
+    public String toString() {
+        return "Car{" +
+                "idChassi=" + idChassi +
+                ", name='" + name + '\'' +
+                ", brand='" + brand + '\'' +
+                ", color='" + color + '\'' +
+                ", fabricationYear='" + fabricationYear + '\'' +
+                '}';
+    }
+
+    public Car(Long id, String name, String brand, String color, String fabricationYear) {
+        this.idChassi = id;
         this.name = name;
         this.brand = brand;
         this.color = color;

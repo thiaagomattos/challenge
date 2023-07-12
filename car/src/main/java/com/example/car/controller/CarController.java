@@ -1,7 +1,5 @@
 package com.example.car.controller;
 
-import com.example.car.dtos.CarDtoRequest;
-import com.example.car.dtos.CarDtoResponse;
 import com.example.car.entity.Car;
 import com.example.car.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,18 +13,16 @@ public class CarController {
     CarService carService;
     @GetMapping("/get")
     public String get() {
-        return "Retorno da api";
+        return carService.getString();
     }
 
     @PostMapping("/post")
-    public String post(@RequestBody CarDtoRequest carDtoRequest) {
-        carService.save(carDtoRequest);
-        return "Salvo com sucesso!";
+    public Car post(@RequestBody Car car) {
+        return carService.save(car);
     }
 
     @GetMapping("/get/{id}")
-    public CarDtoResponse post(@PathVariable Long idChassi) {
-        return carService.getById(idChassi);
+    public Car post(@PathVariable Long id) {
+        return carService.getById(id);
     }
-
 }
