@@ -5,13 +5,9 @@ import com.example.car.dtos.CarDtoResponse;
 import com.example.car.entity.Car;
 import com.example.car.exception.CarNotFoundException;
 import com.example.car.repository.CarRepository;
-import net.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Objects;
 
 
 @Service
