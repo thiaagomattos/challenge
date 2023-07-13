@@ -18,11 +18,11 @@ public class Car {
     public Car() {
     }
 
-    public Long getId() {
+    public Long getIdChassi() {
         return idChassi;
     }
 
-    public void setId(Long id) {
+    public void setIdChassi(Long id) {
         this.idChassi = id;
     }
 

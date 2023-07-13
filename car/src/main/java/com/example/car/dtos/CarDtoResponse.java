@@ -1,26 +1,26 @@
 package com.example.car.dtos;
 
 public class CarDtoResponse {
-    private Long id;
+    private Long idChassi;
     private String name;
     private String brand;
     private String color;
     private String fabricationYear;
 
     public CarDtoResponse(Long id, String name, String brand, String color, String fabricationYear) {
-        this.id = id;
+        this.idChassi = id;
         this.name = name;
         this.brand = brand;
         this.color = color;
         this.fabricationYear = fabricationYear;
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdChassi() {
+        return idChassi;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdChassi(Long id) {
+        this.idChassi = id;
     }
 
     public String getName() {

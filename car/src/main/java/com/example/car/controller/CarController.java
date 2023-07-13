@@ -16,8 +16,12 @@ public class CarController {
 
     @PostMapping("/post")
     public String post(@RequestBody CarDtoRequest carDtoRequest) {
-        carService.save(carDtoRequest);
-        return "Salvo com sucesso!";
+        try {
+            carService.save(carDtoRequest);
+            return "Car saved!";
+        } catch (Exception e) {
+            return "Incorrect brand!";
+        }
     }
 
     @GetMapping("/get/{id}")

@@ -5,31 +5,44 @@ import com.example.car.dtos.CarDtoResponse;
 import com.example.car.entity.Car;
 import com.example.car.exception.CarNotFoundException;
 import com.example.car.repository.CarRepository;
+import net.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
+
 
 @Service
 public class CarService {
 
+    String[] marcas = {"BMW", "Ford", "Volvo", "Chevrolet"};
+
     @Autowired
     CarRepository carRepository;
 
-    public void save(CarDtoRequest carDtoRequest) {
+    public Car save(CarDtoRequest carDtoRequest) {
+
+        if (!Arrays.asList(marcas).contains(carDtoRequest.getBrand())){
+            throw new CarNotFoundException("Carro não encontrado");
+        };
 
         Car car = new Car(null, carDtoRequest.getName(), carDtoRequest.getBrand(),
                 carDtoRequest.getColor(), carDtoRequest.getFabricationYear());
 
-        carRepository.save(car);
+        return carRepository.save(car);
+
     }
 
     public CarDtoResponse getById(Long id) {
         Car car = carRepository
                 .findById(id)
                 .orElseThrow(() -> new CarNotFoundException("Carro não encontrado"));
-        CarDtoResponse carDtoResponse = new CarDtoResponse(car.getId(), car.getName(),
+        CarDtoResponse carDtoResponse = new CarDtoResponse(car.getIdChassi(), car.getName(),
                 car.getBrand(), car.getColor(), car.getFabricationYear());
         return carDtoResponse;
     }
+
+
 }
