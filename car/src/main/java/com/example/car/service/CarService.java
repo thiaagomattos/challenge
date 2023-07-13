@@ -25,7 +25,7 @@ public class CarService {
     public Car save(CarDtoRequest carDtoRequest) {
 
         if (!Arrays.asList(marcas).contains(carDtoRequest.getBrand())){
-            throw new CarNotFoundException("Carro não encontrado");
+            throw new CarNotFoundException("Car not found");
         };
 
         Car car = new Car(null, carDtoRequest.getName(), carDtoRequest.getBrand(),
@@ -38,7 +38,7 @@ public class CarService {
     public CarDtoResponse getById(Long id) {
         Car car = carRepository
                 .findById(id)
-                .orElseThrow(() -> new CarNotFoundException("Carro não encontrado"));
+                .orElseThrow(() -> new CarNotFoundException("Car not found"));
         CarDtoResponse carDtoResponse = new CarDtoResponse(car.getIdChassi(), car.getName(),
                 car.getBrand(), car.getColor(), car.getFabricationYear());
         return carDtoResponse;
