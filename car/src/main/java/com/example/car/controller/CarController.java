@@ -2,6 +2,7 @@ package com.example.car.controller;
 
 import com.example.car.dtos.CarDtoRequest;
 import com.example.car.dtos.CarDtoResponse;
+import com.example.car.exception.CarNotFoundException;
 import com.example.car.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +19,8 @@ public class CarController {
         try {
             carService.save(carDtoRequest);
             return "Car saved!";
-        } catch (Exception e) {
-            return "Incorrect brand!";
+        } catch (CarNotFoundException e) {
+            return "Car NOT saved, try again!";
         }
     }
 

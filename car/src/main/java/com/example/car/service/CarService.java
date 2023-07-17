@@ -20,9 +20,13 @@ public class CarService {
 
     public Car save(CarDtoRequest carDtoRequest) {
 
-        if (!Arrays.asList(marcas).contains(carDtoRequest.getBrand())){
-            throw new CarNotFoundException("Car not found");
+        if(!Arrays.asList(marcas).contains(carDtoRequest.getBrand())){
+            throw new CarNotFoundException("Car NOT saved");
         };
+
+        if(carDtoRequest.getName() == null || carDtoRequest.getColor() == null || carDtoRequest.getFabricationYear() == null) {
+            throw new CarNotFoundException("Error: null field");
+        }
 
         Car car = new Car(null, carDtoRequest.getName(), carDtoRequest.getBrand(),
                 carDtoRequest.getColor(), carDtoRequest.getFabricationYear());

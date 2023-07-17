@@ -1,5 +1,7 @@
 package com.example.car.entity;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 
 @Entity
