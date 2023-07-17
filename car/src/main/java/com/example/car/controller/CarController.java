@@ -20,9 +20,12 @@ public class CarController {
             carService.save(carDtoRequest);
             return "Car saved!";
         } catch (CarNotFoundException e) {
-            return "Car NOT saved, try again!";
+            return "Incorrect brand";
+
+        } catch (NullPointerException e) {
+            return "Error: there's a null field";
+            }
         }
-    }
 
     @GetMapping("/get/{id}")
     public CarDtoResponse post(@PathVariable Long id) {

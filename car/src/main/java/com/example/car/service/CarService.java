@@ -25,7 +25,7 @@ public class CarService {
         };
 
         if(carDtoRequest.getName() == null || carDtoRequest.getColor() == null || carDtoRequest.getFabricationYear() == null) {
-            throw new CarNotFoundException("Error: null field");
+            throw new NullPointerException("Error: null field");
         }
 
         Car car = new Car(null, carDtoRequest.getName(), carDtoRequest.getBrand(),
